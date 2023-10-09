@@ -1,30 +1,59 @@
 body{
-    margin: 0 auto;
     width: 1000px;
     height: 900px;
     background-image: url("tlo.jpg");
-    
+    margin: 0 auto;
 }
 header{
-    background-color: bisque;
-    z-index: 1;
     width: 200px;
-    height: 500px;
+    height: 700px;
+    background-color: bisque;
     float: left;
 }
 section{
-    background-color: rgb(35, 35, 252);
-    color: black;
     width: 800px;
-    height: 500px;
+    height: 700px;
+    background-color: rgb(95, 95, 252);
+    color: black;
     float:left;
     overflow-y: scroll;
 }
 footer{
-    background-color: rgb(1, 1, 163);
-    color: white;
-    text-align: center;
-    float:left;
     width: 1000px;
     height: 120px;
+    background-color: rgb(1, 1, 163);
+    color: white;
+    float:left;
+    text-align: center;
+}
+ul li a{
+    height: 40px;
+}
+ul:first-child{
+    display: block;
+    background-color: aqua;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    border: 1px black solid; 
+}
+ul:first-child a{
+    display: block;
+    background-color: aqua;
+    list-style: none;
+}
+ul:nth-child(2), ul:nth-child(2) a{
+    display: block;
+    background-color: rgb(0, 255, 106);
+    list-style: none;
+    padding:0;
+}
+ul a:link, ul a:visited{
+    text-decoration: none;
+    color:black;
+}
+ul a:hover{
+    background-color: black;
+    color: white;
 }
