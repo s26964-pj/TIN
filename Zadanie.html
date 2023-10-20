@@ -33,6 +33,8 @@
                     </li>
                 </ul>
             </nav>
+            <div class="underList">
+            </div>
         </header>
         <section>
             <article>
@@ -53,17 +55,11 @@
                 <p>lorem ipsum</p>
                 <form action="Zadanie.html" method="post">
                     <div>
-                        <div>
+                        <div class="imienazwisko">
                             <label for="imie">Imię i nazwisko</label><br />
                             <input type="text" id="imie" name="imie" placeholder="imię i nazwisko" />
                         </div>
-                        <div>
-                            <label for="opis">Opis</label><br />
-                            <textarea rows="5" cols="30" id="opis" name="opis" placeholder="wpisz coś o sobie"></textarea>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
+                        <div class="wiek">
                             <label for="wiek">Wiek</label><br />
                             <select id="wiek" name="wiek">
                                 <option value="0">wybierz...</option>
@@ -71,7 +67,14 @@
                                 <option value="2">Pełnoletni</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="opis">
+                            <label for="opis">Opis</label><br />
+                            <textarea rows="5" cols="30" id="opis" name="opis" placeholder="wpisz coś o sobie"></textarea>
+                        </div>
+                    </div>
+                    <div>
+                        
+                        <div calss="opcja">
                             <label>Opcja</label><br />
                             <input type="radio" name="opcja" value="a" /> a<br />
                             <input type="radio" name="opcja" value="b" /> b<br />

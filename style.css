@@ -1,59 +1,95 @@
 body{
-    width: 1000px;
+    width: 1350px;
     height: 900px;
     background-image: url("tlo.jpg");
     margin: 0 auto;
 }
 header{
-    width: 200px;
+    width: 300px;
     height: 700px;
-    background-color: bisque;
+    background-color: rgba(48, 204, 252, 0.308);
     float: left;
 }
 section{
-    width: 800px;
+    width: 985px;
     height: 700px;
-    background-color: rgb(95, 95, 252);
+    background-color: #78aaef;
     color: black;
     float:left;
     overflow-y: scroll;
+    padding-left: 15px;
 }
 footer{
-    width: 1000px;
+    width: 1300px;
     height: 120px;
-    background-color: rgb(1, 1, 163);
+    background-color: #010080;
     color: white;
     float:left;
     text-align: center;
 }
-ul li a{
-    height: 40px;
+.underList{
+    float: left;
+    width: 200px;
+    height: 460px;
+}
+ul li a, ul:nth-child(2) li a{
+    height: 20px;
+    padding-top: 6px;
 }
 ul:first-child{
     display: block;
-    background-color: aqua;
     list-style: none;
     margin: 0;
     padding: 0;
     text-align: left;
-    border: 1px black solid; 
 }
 ul:first-child a{
     display: block;
-    background-color: aqua;
+    background-color: #6599e4;
     list-style: none;
 }
 ul:nth-child(2), ul:nth-child(2) a{
     display: block;
-    background-color: rgb(0, 255, 106);
+    background-color: #4377dd;
     list-style: none;
     padding:0;
 }
 ul a:link, ul a:visited{
     text-decoration: none;
     color:black;
+    color: white;
+    font-size: 100%;
+    font-weight: 600;
 }
 ul a:hover{
-    background-color: black;
-    color: white;
+    background-color: #89b5f3;
+}
+h1{
+    font-size: xxx-large;
+    color: rgb(0, 0, 150);
+}
+.klasa{
+    font-size: xxx-large;
+    color: rgb(0, 0, 150);
+}
+.imienazwisko{
+    border: 2px black solid;
+    height: 40px;
+    width: 200px;
+    float:left;
+}
+.opis{
+    height: 130px;
+    width: 300px;
+    border: 2px black solid;
+    float:inline-end
+}
+.wiek{
+    border: 2px black solid;
+    height: 70px;
+    width: 150px;
+    float:left;
+}
+.opcja{
+    border: 15px black solid;
 }
