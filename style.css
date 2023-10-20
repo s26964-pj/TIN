@@ -13,7 +13,7 @@ header{
 section{
     width: 985px;
     height: 700px;
-    background-color: #78aaef;
+    background-color: RGB(120,170,239);
     color: black;
     float:left;
     overflow-y: scroll;
@@ -22,7 +22,7 @@ section{
 footer{
     width: 1300px;
     height: 120px;
-    background-color: #010080;
+    background-color: RGB(1,0,128);
     color: white;
     float:left;
     text-align: center;
@@ -45,12 +45,12 @@ ul:first-child{
 }
 ul:first-child a{
     display: block;
-    background-color: #6599e4;
+    background-color: RGB(101,153,228);
     list-style: none;
 }
 ul:nth-child(2), ul:nth-child(2) a{
     display: block;
-    background-color: #4377dd;
+    background-color: RGB(67,119,221);
     list-style: none;
     padding:0;
 }
@@ -70,26 +70,47 @@ h1{
 }
 .klasa{
     font-size: xxx-large;
-    color: rgb(0, 0, 150);
+    color: RGB(34,51,152);
 }
-.imienazwisko{
-    border: 2px black solid;
-    height: 40px;
-    width: 200px;
-    float:left;
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 15px;
 }
-.opis{
-    height: 130px;
+
+.left-column, .right-column {
+    width: 45%;
+}
+.left-column{
+    margin-left: 15px;
+}
+
+.opis, .opcja {
+    margin-top: 10px;
+}
+.tabela{
+    width: 960px;
+    padding-bottom: 15px;
+}
+table{
+    margin:0 auto;
+}
+td{
+    width: 320px;
+    height: 30px;
+    text-align: center;
+}
+th{
+    background-color: RGB(51,118,170);
     width: 300px;
-    border: 2px black solid;
-    float:inline-end
+    height: 30px;
 }
-.wiek{
-    border: 2px black solid;
-    height: 70px;
-    width: 150px;
-    float:left;
+tr:nth-child(even) {
+    background-color: RGB(187,213,246);
 }
-.opcja{
-    border: 15px black solid;
+
+tr:nth-child(odd) {
+    background-color: RGB(120,170,239);
 }
