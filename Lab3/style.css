@@ -1,116 +1,115 @@
 body{
-    width: 1350px;
-    height: 900px;
-    background-image: url("tlo.jpg");
+    width: 1200px;
+    height: 1000px;
     margin: 0 auto;
+    border:1px black solid;
 }
+
 header{
-    width: 300px;
-    height: 700px;
-    background-color: rgba(48, 204, 252, 0.308);
-    float: left;
+    width: 1200px;
+    height: 50px;
+    background-color: white;
 }
+
 section{
-    width: 985px;
+    background-color: #eeeeee;
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+}
+article{
+    width: 550px;
     height: 700px;
-    background-color: RGB(120,170,239);
-    color: black;
-    float:left;
-    overflow-y: scroll;
-    padding-left: 15px;
+    background-color: white;
+    padding: 15px;
+    margin:15px;
+    box-shadow: 3px 3px 3px #dedcd1;
 }
 footer{
-    width: 1300px;
-    height: 120px;
-    background-color: RGB(1,0,128);
-    color: white;
-    float:left;
+    display: flex;
+    justify-content: space-between;
     text-align: center;
+    height: 50px;
+    width: 1200px;
+    color:#dedcd1;
+    padding-top:5px;
 }
-.underList{
-    float: left;
-    width: 200px;
-    height: 460px;
-}
-ul li a, ul:nth-child(2) li a{
-    height: 20px;
-    padding-top: 6px;
-}
-ul:first-child{
-    display: block;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    text-align: left;
-}
-ul:first-child a{
-    display: block;
-    background-color: RGB(101,153,228);
-    list-style: none;
-}
-ul:nth-child(2), ul:nth-child(2) a{
-    display: block;
-    background-color: RGB(67,119,221);
-    list-style: none;
-    padding:0;
-}
-ul a:link, ul a:visited{
-    text-decoration: none;
-    color:black;
-    color: white;
-    font-size: 100%;
-    font-weight: 600;
-}
-ul a:hover{
-    background-color: #89b5f3;
-}
-h1{
-    font-size: xxx-large;
-    color: rgb(0, 0, 150);
+footer div{
+    border-right: 1px #dedcd1 solid;
+    width: 400px;
 }
 .klasa{
     font-size: xxx-large;
     color: RGB(34,51,152);
 }
-.container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding-bottom: 15px;
+
+/* heder - lista */ 
+
+ul {
+    list-style-type:none;
+    padding:0;
+    margin:0;
+    background-color:#FFF;
+    font-size:18px;
+    height:2em;
+    line-height:2em;
+    text-align:center;
 }
 
-.left-column, .right-column {
-    width: 45%;
-}
-.left-column{
-    margin-left: 15px;
-}
-
-.opis, .opcja {
-    margin-top: 10px;
-}
-.tabela{
-    width: 960px;
-    padding-bottom: 15px;
-}
-table{
-    margin:0 auto;
-}
-td{
-    width: 320px;
-    height: 30px;
-    text-align: center;
-}
-th{
-    background-color: RGB(51,118,170);
-    width: 300px;
-    height: 30px;
-}
-tr:nth-child(even) {
-    background-color: RGB(187,213,246);
+ul a {
+    display:block;
+    text-decoration:none;
+    color: #c9c7fb;
+    padding:0 5px;
 }
 
-tr:nth-child(odd) {
-    background-color: RGB(120,170,239);
+ul > li {
+    float:left;
+    width:150px;
+    margin-left:1px;
+    height:2em;
 }
+
+ul > li:first-child {
+    margin-left:0;
+}
+
+ul > li:hover {
+    background-color:#EEE;
+}
+
+ul > li:hover > a {
+    color:#09C;
+}
+
+ul > li:hover > ul {
+    display:block;
+}
+
+/* Rozwijanie listy */
+
+ul > li > ul {
+    display:none;
+    list-style-type:none;
+    padding:0;
+    margin:0;
+}
+
+ul > li > ul > li {
+    position:relative;
+    background-color:#EEE;
+}
+
+ul > li > ul > li > a {
+    border-top:1px solid #FFF;
+}
+
+ul > li > ul > li:hover {
+    background-color:#DDD;
+}
+
+ul > li > ul > li:hover > a {
+    color:#09C;
+}
+
+/* Skalowanie ekranu */
