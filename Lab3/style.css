@@ -1,8 +1,7 @@
 body{
     width: 1200px;
-    height: 1000px;
+    height: 870px;
     margin: 0 auto;
-    border:1px black solid;
 }
 
 header{
@@ -39,8 +38,25 @@ footer div{
     width: 400px;
 }
 .klasa{
+    font-size: x-large;
+}
+h2{
     font-size: xxx-large;
-    color: RGB(34,51,152);
+}
+form{
+    background-color: RGB(221,221,221);
+    padding: 10px;
+}
+td{
+    width: 110px;
+    height: 30px;
+    text-align: center;
+    border-bottom: 1px grey solid;
+}
+th{
+    width: 90px;
+    height: 20px;
+    font-weight: bold;
 }
 
 /* heder - lista */ 
@@ -50,36 +66,30 @@ ul {
     padding:0;
     margin:0;
     background-color:#FFF;
-    font-size:18px;
+    font-size:15px;
     height:2em;
     line-height:2em;
-    text-align:center;
 }
 
 ul a {
     display:block;
     text-decoration:none;
-    color: #c9c7fb;
     padding:0 5px;
+    margin-top: 5px;
 }
 
 ul > li {
     float:left;
-    width:150px;
+    width:50px;
     margin-left:1px;
-    height:2em;
+    height:2.5em;
 }
 
 ul > li:first-child {
     margin-left:0;
 }
-
-ul > li:hover {
-    background-color:#EEE;
-}
-
-ul > li:hover > a {
-    color:#09C;
+ul li a:hover{
+    color:blue;
 }
 
 ul > li:hover > ul {
@@ -92,16 +102,15 @@ ul > li > ul {
     display:none;
     list-style-type:none;
     padding:0;
-    margin:0;
+    margin:0;  
 }
 
 ul > li > ul > li {
     position:relative;
     background-color:#EEE;
-}
-
-ul > li > ul > li > a {
-    border-top:1px solid #FFF;
+    width: 200px;
+    box-shadow: 3px 0px 3px #dedcd1;
+    border-bottom: 1px black solid;
 }
 
 ul > li > ul > li:hover {
@@ -113,3 +122,27 @@ ul > li > ul > li:hover > a {
 }
 
 /* Skalowanie ekranu */
+
+@media (max-width: 1000px) {
+    body{
+        width: 550px;
+    }
+    
+    header{
+        width: 550px;
+    }
+    
+    section{
+        flex-wrap: wrap;
+        width: 550px;
+    }
+    article{
+        width: 550px;
+    }
+    footer{
+        width: 550px;
+    }
+    footer div{
+        width: 400px;
+    }
+}

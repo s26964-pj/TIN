@@ -1,116 +1,151 @@
 body{
-    width: 1350px;
-    height: 900px;
-    background-image: url("tlo.jpg");
+    width: 1200px;
+    height: 870px;
     margin: 0 auto;
 }
+
 header{
-    width: 300px;
-    height: 700px;
-    background-color: rgba(48, 204, 252, 0.308);
-    float: left;
+    width: 1200px;
+    height: 50px;
+    background-color: white;
 }
+
 section{
-    width: 985px;
+    background-color: #eeeeee;
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+}
+article{
+    width: 550px;
     height: 700px;
-    background-color: RGB(120,170,239);
-    color: black;
-    float:left;
-    overflow-y: scroll;
-    padding-left: 15px;
+    background-color: white;
+    padding: 15px;
+    margin:15px;
+    box-shadow: 3px 3px 3px #dedcd1;
 }
 footer{
-    width: 1300px;
-    height: 120px;
-    background-color: RGB(1,0,128);
-    color: white;
-    float:left;
+    display: flex;
+    justify-content: space-between;
     text-align: center;
+    height: 50px;
+    width: 1200px;
+    color:#dedcd1;
+    padding-top:5px;
 }
-.underList{
-    float: left;
-    width: 200px;
-    height: 460px;
+footer div{
+    border-right: 1px #dedcd1 solid;
+    width: 400px;
 }
-ul li a, ul:nth-child(2) li a{
-    height: 20px;
-    padding-top: 6px;
-}
-ul:first-child{
-    display: block;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    text-align: left;
-}
-ul:first-child a{
-    display: block;
-    background-color: RGB(101,153,228);
-    list-style: none;
-}
-ul:nth-child(2), ul:nth-child(2) a{
-    display: block;
-    background-color: RGB(67,119,221);
-    list-style: none;
-    padding:0;
-}
-ul a:link, ul a:visited{
-    text-decoration: none;
-    color:black;
-    color: white;
-    font-size: 100%;
-    font-weight: 600;
-}
-ul a:hover{
-    background-color: #89b5f3;
-}
-h1{
-    font-size: xxx-large;
-    color: rgb(0, 0, 150);
+img{
+    height: 130px;
 }
 .klasa{
+    font-size: x-large;
+}
+h2{
     font-size: xxx-large;
-    color: RGB(34,51,152);
 }
-.container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding-bottom: 15px;
-}
-
-.left-column, .right-column {
-    width: 45%;
-}
-.left-column{
-    margin-left: 15px;
-}
-
-.opis, .opcja {
-    margin-top: 10px;
-}
-.tabela{
-    width: 960px;
-    padding-bottom: 15px;
-}
-table{
-    margin:0 auto;
+form{
+    background-color: RGB(221,221,221);
+    padding: 10px;
 }
 td{
-    width: 320px;
+    width: 110px;
     height: 30px;
     text-align: center;
+    border-bottom: 1px grey solid;
 }
 th{
-    background-color: RGB(51,118,170);
-    width: 300px;
-    height: 30px;
-}
-tr:nth-child(even) {
-    background-color: RGB(187,213,246);
+    width: 90px;
+    height: 20px;
+    font-weight: bold;
 }
 
-tr:nth-child(odd) {
-    background-color: RGB(120,170,239);
+/* heder - lista */ 
+
+ul {
+    list-style-type:none;
+    padding:0;
+    margin:0;
+    background-color:#FFF;
+    font-size:15px;
+    height:2em;
+    line-height:2em;
+}
+
+ul a {
+    display:block;
+    text-decoration:none;
+    padding:0 5px;
+    margin-top: 5px;
+}
+
+ul > li {
+    float:left;
+    width:50px;
+    margin-left:1px;
+    height:2.5em;
+}
+
+ul > li:first-child {
+    margin-left:0;
+}
+ul li a:hover{
+    color:blue;
+}
+
+ul > li:hover > ul {
+    display:block;
+}
+
+/* Rozwijanie listy */
+
+ul > li > ul {
+    display:none;
+    list-style-type:none;
+    padding:0;
+    margin:0;  
+}
+
+ul > li > ul > li {
+    position:relative;
+    background-color:#EEE;
+    width: 200px;
+    box-shadow: 3px 0px 3px #dedcd1;
+    border-bottom: 1px black solid;
+}
+
+ul > li > ul > li:hover {
+    background-color:#DDD;
+}
+
+ul > li > ul > li:hover > a {
+    color:#09C;
+}
+
+/* Skalowanie ekranu */
+
+@media (max-width: 1000px) {
+    body{
+        width: 550px;
+    }
+    
+    header{
+        width: 550px;
+    }
+    
+    section{
+        flex-wrap: wrap;
+        width: 550px;
+    }
+    article{
+        width: 550px;
+    }
+    footer{
+        width: 550px;
+    }
+    footer div{
+        width: 400px;
+    }
 }
