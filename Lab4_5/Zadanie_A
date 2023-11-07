@@ -1,0 +1,142 @@
+//Zadanie 1
+
+function czyTrojkaPitagorejska(a, b, c) {
+    console.clear();
+    let sortedNumbers = [a, b, c].sort((x, y) => x - y);
+    console.log(sortedNumbers[0]**2 + sortedNumbers[1]**2 === sortedNumbers[2]**2);
+}
+
+//Zadanie 2
+
+function wypiszPodzielne(a, b, c) {
+    console.clear();
+    for (let i = a; i <= b; i++) {
+        if (i % c === 0) {
+            console.log(i);
+        }
+    }
+}
+
+//Zadanie 3
+
+function tabliczka(bok) {
+    for (let i = 1; i <= bok; i++) {
+        let row = '';
+        for (let j = 1; j <= bok; j++) {
+            row += (i * j) + ' ';
+        }
+        console.clear();
+        console.log(row);
+    }
+}
+//Zadanie 4
+
+function fibonacci(dlugosc) {
+    console.clear();
+    let a = 0, b = 1;
+    for (let i = 0; i < dlugosc; i++) {
+        console.log(a);
+        let temp = a;
+        a = b;
+        b += temp;
+    }
+}
+
+//Zadanie 5
+
+function choinka(wysokosc) {
+    for (let i = 1; i <= wysokosc; i++) {
+        let row = '';
+        for (let j = 1; j <= i; j++) {
+            row += '*';
+        }
+        console.clear();
+        console.log(row);
+    }
+}
+
+//Zadanie 6
+
+function choinkaNoca(wysokosc) {
+    let szerokosc = 2 * wysokosc - 1;
+    for (let i = 1; i <= wysokosc; i++) {
+        let row = '';
+        let iloscAsteriskow = 2 * i - 1;
+        let iloscSpacji = (szerokosc - iloscAsteriskow) / 2;
+        
+        for (let j = 1; j <= szerokosc; j++) {
+            if (j <= iloscSpacji || j > iloscSpacji + iloscAsteriskow) {
+                row += ' ';
+            } else {
+                row += '*';
+            }
+        }
+        console.clear();
+        console.log(row);
+    }
+}
+
+//Zadanie 7
+
+function poleFigury(rodzaj, a, b, h) {
+    switch (rodzaj) {
+        case 'prostokat':
+            console.clear();
+            return a * b;
+        case 'trapez':
+            console.clear();
+            return (a + b) * h / 2;
+        case 'rownoleglobok':
+            console.clear();
+            return a * h;
+        case 'trojkat':
+            console.clear();
+            return a * h / 2;
+        default:
+            console.clear();
+            return 'Nieznany rodzaj figury';
+    }
+}
+
+//Zadanie 8
+
+let poleFigury1 = (function() {
+    let figury = {
+        prostokat: (a, b) => a * b,
+        trapez: (a, b, h) => (a + b) * h / 2,
+        rownoleglobok: (a, h) => a * h,
+        trojkat: (a, h) => a * h / 2
+    };
+    return function(rodzaj, ...args) {
+        console.clear();
+        return figury[rodzaj](...args) || 'Nieznany rodzaj figury';
+    }
+})();
+
+//Zadanie 9
+
+function trojkatPascala(wysokosc) {
+    let trojkat = [];
+    for (let i = 0; i < wysokosc; i++) {
+        trojkat[i] = [];
+        for (let j = 0; j <= i; j++) {
+            if (j === 0 || j === i) {
+                trojkat[i][j] = 1;
+            } else {
+                trojkat[i][j] = trojkat[i-1][j-1] + trojkat[i-1][j];
+            }
+        }
+    }
+    console.clear();
+    console.log(trojkat);
+}
+
+//Zadanie 10
+
+function cenzura(niedozwolone, zdanie) {
+    for (let slowo of niedozwolone) {
+        zdanie = zdanie.replace(new RegExp(slowo, 'gi'), '*'.repeat(slowo.length));
+    }
+    console.clear();
+    console.log(zdanie);
+}
