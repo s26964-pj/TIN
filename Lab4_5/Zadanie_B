@@ -1,0 +1,86 @@
+       // Zadanie 11
+       let auto = {
+        rok: 2019,
+        przebieg: 50000,
+        cena_wyjsciowa: 30000,
+        cena_koncowa: 28000,
+        powiekszCeneWyjsciowa: function() {
+            this.cena_wyjsciowa += 1000;
+        },
+        obnizCeneKoncowa: function() {
+            let lataWiek = new Date().getFullYear() - this.rok;
+            this.cena_koncowa -= lataWiek * 1000;
+        },
+        obnizCenePrzebiegu: function() {
+            let iloscDziesiatekTysiecy = Math.floor(this.przebieg / 100000);
+            this.cena_koncowa -= iloscDziesiatekTysiecy * 10000;
+        },
+        dodajPrzebiegIRok: function(przebieg, rok) {
+            this.przebieg += przebieg;
+            this.rok = rok;
+            this.obnizCeneKoncowa();
+            this.obnizCenePrzebiegu();
+        }
+    };
+
+    function modyfikujAuto() {
+        console.log("Przed modyfikacjami:");
+        console.log(auto);
+        auto.powiekszCeneWyjsciowa();
+        auto.obnizCeneKoncowa();
+        auto.obnizCenePrzebiegu();
+        console.log("Po modyfikacjach:");
+        console.log(auto);
+        auto.dodajPrzebiegIRok(20000, 2022);
+        console.log("Po dodaniu przebiegu i roku:");
+        console.log(auto);
+    }
+
+    // Zadanie 12
+    class Ocena {
+        constructor(przedmiot, wartosc) {
+            this.przedmiot = przedmiot;
+            this.wartosc = wartosc;
+        }
+    }
+
+    class Student {
+        constructor(imie, nazwisko) {
+            this.oceny = [];
+            this.srednia = 0;
+            this.imie = imie;
+            this.nazwisko = nazwisko;
+        }
+
+        hello() {
+            return `Witaj ${this.imie} ${this.nazwisko}, Twoja średnia ocen to: ${this.srednia}.`;
+        }
+
+        set ocena(ocena) {
+            this.oceny.push(ocena);
+            this.przeliczSrednia();
+        }
+
+        get oceny() {
+            return this.oceny.map(ocena => `Przedmiot: ${ocena.przedmiot} - ocena ${ocena.wartosc}`).join('. ');
+        }
+
+        przeliczSrednia() {
+            if (this.oceny.length === 0) {
+                this.srednia = 0;
+            } else {
+                let sumaOcen = this.oceny.reduce((suma, ocena) => suma + ocena.wartosc, 0);
+                this.srednia = sumaOcen / this.oceny.length;
+            }
+        }
+    }
+
+    function modyfikujStudenta() {
+        let s = new Student('Jan', 'Kowalski');
+        console.log(s.hello());
+        s.ocena = new Ocena('WPR', 4);
+        s.ocena = new Ocena('TIN', 3);
+        s.ocena = new Ocena('POJ', 2);
+        console.log(s.hello());
+        console.log(s.oceny);
+    }

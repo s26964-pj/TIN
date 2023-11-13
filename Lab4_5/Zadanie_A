@@ -1,142 +1,181 @@
-//Zadanie 1
-
-function czyTrojkaPitagorejska(a, b, c) {
+// Zadanie 1
+function czyTrojkaPitagorejska() {
     console.clear();
-    let sortedNumbers = [a, b, c].sort((x, y) => x - y);
-    console.log(sortedNumbers[0]**2 + sortedNumbers[1]**2 === sortedNumbers[2]**2);
+    var a = parseFloat(prompt('Podaj długość boku a:'));
+    var b = parseFloat(prompt('Podaj długość boku b:'));
+    var c = parseFloat(prompt('Podaj długość boku c:'));
+
+    var liczby = [a, b, c].sort(function (x, y) {
+        return x - y;
+    });
+
+    if (liczby[0] ** 2 + liczby[1] ** 2 === liczby[2] ** 2) {
+        console.log('To jest trójka pitagorejska!');
+    } else {
+        console.log('To nie jest trójka pitagorejska.');
+    }
 }
 
-//Zadanie 2
-
-function wypiszPodzielne(a, b, c) {
+// Zadanie 2
+function liczbyPodzielne() {
     console.clear();
-    for (let i = a; i <= b; i++) {
+    var a = parseInt(prompt('Podaj początek przedziału:'));
+    var b = parseInt(prompt('Podaj koniec przedziału:'));
+    var c = parseInt(prompt('Podaj liczbę, przez którą mają być podzielne:'));
+
+    for (var i = a; i <= b; i++) {
         if (i % c === 0) {
             console.log(i);
         }
     }
 }
 
-//Zadanie 3
+// Zadanie 3
+function tabliczkaMnozenia() {
+    console.clear();
+    var bok = parseInt(prompt('Podaj bok tabliczki mnożenia:'));
 
-function tabliczka(bok) {
-    for (let i = 1; i <= bok; i++) {
-        let row = '';
-        for (let j = 1; j <= bok; j++) {
+    for (var i = 1; i <= bok; i++) {
+        var row = '';
+        for (var j = 1; j <= bok; j++) {
             row += (i * j) + ' ';
         }
-        console.clear();
         console.log(row);
     }
 }
-//Zadanie 4
 
-function fibonacci(dlugosc) {
+// Zadanie 4
+function ciagFibonacciego() {
     console.clear();
-    let a = 0, b = 1;
-    for (let i = 0; i < dlugosc; i++) {
-        console.log(a);
-        let temp = a;
-        a = b;
-        b += temp;
+    var dlugosc = parseInt(prompt('Podaj długość ciągu Fibonacciego:'));
+
+    var fib = [0, 1];
+    for (var i = 2; i < dlugosc; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
     }
+    console.log(fib.join(', '));
 }
 
-//Zadanie 5
+// Zadanie 5
+function rysujChoinke() {
+    console.clear();
+    var wysokosc = parseInt(prompt('Podaj wysokość choinki:'));
 
-function choinka(wysokosc) {
-    for (let i = 1; i <= wysokosc; i++) {
-        let row = '';
-        for (let j = 1; j <= i; j++) {
+    for (var i = 1; i <= wysokosc; i++) {
+        var row = '';
+        for (var j = 1; j <= i; j++) {
             row += '*';
         }
-        console.clear();
         console.log(row);
     }
 }
 
-//Zadanie 6
-
-function choinkaNoca(wysokosc) {
-    let szerokosc = 2 * wysokosc - 1;
-    for (let i = 1; i <= wysokosc; i++) {
-        let row = '';
-        let iloscAsteriskow = 2 * i - 1;
-        let iloscSpacji = (szerokosc - iloscAsteriskow) / 2;
-        
-        for (let j = 1; j <= szerokosc; j++) {
-            if (j <= iloscSpacji || j > iloscSpacji + iloscAsteriskow) {
-                row += ' ';
-            } else {
-                row += '*';
-            }
+// Zadanie 6
+function rysujChoinkaNoca() {
+    console.clear();
+    var wysokosc = parseInt(prompt('Podaj wysokość choinki nocą:'));
+    
+    for (var i = wysokosc; i >= 1; i--) {
+        var row = '';
+        for (var j = 1; j <= i; j++) {
+            row += '*';
         }
-        console.clear();
+        for (var k = 1; k <= (wysokosc - i) * 2; k++) {
+            row += ' ';
+        }
+        for (var l = 1; l <= i; l++) {
+            row += '*';
+        }
         console.log(row);
     }
+    var ostatniRzad = '*'.repeat(wysokosc * 2);
+    console.log(ostatniRzad);
 }
 
-//Zadanie 7
 
-function poleFigury(rodzaj, a, b, h) {
-    switch (rodzaj) {
+// Zadanie 7
+function poleFigury() {
+    console.clear();
+    var ksztalt = prompt('Podaj kształt figury (prostokat, trapez, rownoleglobok, trojkat):');
+    var wymiaryStr = prompt('Podaj wymiary figury oddzielone przecinkiem:');
+    var wymiary = wymiaryStr.split(',').map(Number);
+
+    switch (ksztalt) {
         case 'prostokat':
-            console.clear();
-            return a * b;
+            console.log('Pole prostokąta: ' + wymiary[0] * wymiary[1]);
+            break;
         case 'trapez':
-            console.clear();
-            return (a + b) * h / 2;
+            console.log('Pole trapezu: ' + (wymiary[0] + wymiary[1]) * wymiary[2] / 2);
+            break;
         case 'rownoleglobok':
-            console.clear();
-            return a * h;
+            console.log('Pole równoległoboku: ' + wymiary[0] * wymiary[1]);
+            break;
         case 'trojkat':
-            console.clear();
-            return a * h / 2;
+            console.log('Pole trójkąta: ' + wymiary[0] * wymiary[1] / 2);
+            break;
         default:
-            console.clear();
-            return 'Nieznany rodzaj figury';
+            console.log('Nieznany kształt');
     }
 }
 
-//Zadanie 8
+// Zadanie 8
+function poleFiguryCallback() {
+    console.clear();
+    var ksztalt = prompt('Podaj kształt figury (prostokat, trapez, rownoleglobok, trojkat):');
+    var wymiaryStr = prompt('Podaj wymiary figury oddzielone przecinkiem:');
+    var wymiary = wymiaryStr.split(',').map(Number);
 
-let poleFigury1 = (function() {
-    let figury = {
-        prostokat: (a, b) => a * b,
-        trapez: (a, b, h) => (a + b) * h / 2,
-        rownoleglobok: (a, h) => a * h,
-        trojkat: (a, h) => a * h / 2
+    var obliczPole = function (ksztalt, wymiary) {
+        var pola = {
+            prostokat: function (wymiary) {
+                return wymiary[0] * wymiary[1];
+            },
+            trapez: function (wymiary) {
+                return (wymiary[0] + wymiary[1]) * wymiary[2] / 2;
+            },
+            rownoleglobok: function (wymiary) {
+                return wymiary[0] * wymiary[1];
+            },
+            trojkat: function (wymiary) {
+                return wymiary[0] * wymiary[1] / 2;
+            }
+        };
+
+        return pola[ksztalt](wymiary);
     };
-    return function(rodzaj, ...args) {
-        console.clear();
-        return figury[rodzaj](...args) || 'Nieznany rodzaj figury';
-    }
-})();
 
-//Zadanie 9
+    console.log('Pole figury: ' + obliczPole(ksztalt, wymiary));
+}
 
-function trojkatPascala(wysokosc) {
-    let trojkat = [];
-    for (let i = 0; i < wysokosc; i++) {
+// Zadanie 9
+function trojkatPascala() {
+    console.clear();
+    var wysokosc = parseInt(prompt('Podaj wysokość trójkąta Pascala:'));
+
+    var trojkat = [];
+    for (var i = 0; i < wysokosc; i++) {
         trojkat[i] = [];
-        for (let j = 0; j <= i; j++) {
+        for (var j = 0; j <= i; j++) {
             if (j === 0 || j === i) {
                 trojkat[i][j] = 1;
             } else {
-                trojkat[i][j] = trojkat[i-1][j-1] + trojkat[i-1][j];
+                trojkat[i][j] = trojkat[i - 1][j - 1] + trojkat[i - 1][j];
             }
         }
     }
-    console.clear();
-    console.log(trojkat);
+    console.log(trojkat.map(row => row.join(' ')).join('\n'));
 }
 
-//Zadanie 10
-
-function cenzura(niedozwolone, zdanie) {
-    for (let slowo of niedozwolone) {
-        zdanie = zdanie.replace(new RegExp(slowo, 'gi'), '*'.repeat(slowo.length));
-    }
+// Zadanie 10
+function cenzura() {
     console.clear();
+    var zakazaneStr = prompt('Podaj zakazane słowa oddzielone przecinkiem:');
+    var zakazane = zakazaneStr.split(',').map(word => word.trim());
+    var zdanie = prompt('Podaj zdanie do ocenzurowania:');
+
+    zakazane.forEach(function (slowo) {
+        var regex = new RegExp('\\b' + slowo + '\\b', 'gi');
+        zdanie = zdanie.replace(regex, '*'.repeat(slowo.length));
+    });
     console.log(zdanie);
 }
