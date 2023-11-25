@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Zadania JS</title>
+    <script src="Zadanie_A"></script>
     <style>
         body{
             background-color: black;
@@ -11,13 +12,11 @@
         }
         #left{
             float:left;
-            border:1px white solid;
             width: 49%;
             height: 1100px;
         }
         #right{
             float:right;
-            border:1px white solid;
             width: 49%;
             height: 1100px;
         }
@@ -27,48 +26,35 @@
 <body>
     <div id="left">
         <h2>Zadanie 1</h2>
-        <button onclick="czyTrojkaPitagorejska()">Sprawdź trójkę pitagorejską</button>
+        <button onclick="czyTrojkaPitagorejska(3, 4, 5)">Sprawdź trójkę pitagorejską</button>
 
         <h2>Zadanie 2</h2>
-        <button onclick="liczbyPodzielne()">Liczby podzielne</button>
+        <button onclick="liczbyPodzielne(1, 20, 3)">Liczby podzielne</button>
 
         <h2>Zadanie 3</h2>
-        <button onclick="tabliczkaMnozenia()">Tabliczka mnożenia</button>
+        <button onclick="tabliczkaMnozenia(5)">Tabliczka mnożenia</button>
 
         <h2>Zadanie 4</h2>
-        <button onclick="ciagFibonacciego()">Ciąg Fibonacciego</button>
+        <button onclick="ciagFibonacciego(8)">Ciąg Fibonacciego</button>
 
         <h2>Zadanie 5</h2>
-        <button onclick="rysujChoinke()">Rysuj choinkę</button>
+        <button onclick="rysujChoinke(4)">Rysuj choinkę</button>
 
         <h2>Zadanie 6</h2>
-        <button onclick="rysujChoinkaNoca()">Rysuj choinkę nocą</button>
+        <button onclick="rysujChoinkaNoca(3)">Rysuj choinkę nocą</button>
 
         <h2>Zadanie 7</h2>
-        <button onclick="poleFigury()">Pole figury</button>
+        <button onclick="poleFigury('prostokat', [4, 6])">Pole figury</button>
 
         <h2>Zadanie 8</h2>
-        <button onclick="poleFiguryCallback()">Pole figury (callback)</button>
+        <button onclick="poleFiguryCallback('trapez', [3, 5, 4])">Pole figury</button>
 
         <h2>Zadanie 9</h2>
-        <button onclick="trojkatPascala()">Trójkąt Pascala</button>
+        <button onclick="trojkatPascala(5)">Trójkąt Pascala</button>
 
         <h2>Zadanie 10</h2>
-        <button onclick="uruchomCenzure()">Cenzura</button>
+        <button onclick="cenzura(['ala', 'kot'], 'ala ma kota')">Cenzura</button>
     </div>
-
-    <div id="right">
-        <!-- Zadanie 11 -->
-        <h2>Zadanie 11</h2>
-        <button onclick="modyfikujAuto()">Modyfikuj auto</button>
-
-        <!-- Zadanie 12 -->
-        <h2>Zadanie 12</h2>
-        <button onclick="modyfikujStudenta()">Modyfikuj studenta</button>
-    </div>
-
-    <script src="Zadanie_A"></script>
-    <script src="Zadanie_B"></script>
 </body>
 
 </html>

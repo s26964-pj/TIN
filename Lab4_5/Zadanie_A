@@ -1,9 +1,6 @@
 // Zadanie 1
-function czyTrojkaPitagorejska() {
-    console.clear();
-    var a = parseFloat(prompt('Podaj długość boku a:'));
-    var b = parseFloat(prompt('Podaj długość boku b:'));
-    var c = parseFloat(prompt('Podaj długość boku c:'));
+function czyTrojkaPitagorejska(a, b, c) {
+    console.log("Zadanie 1");
 
     var liczby = [a, b, c].sort(function (x, y) {
         return x - y;
@@ -17,11 +14,8 @@ function czyTrojkaPitagorejska() {
 }
 
 // Zadanie 2
-function liczbyPodzielne() {
-    console.clear();
-    var a = parseInt(prompt('Podaj początek przedziału:'));
-    var b = parseInt(prompt('Podaj koniec przedziału:'));
-    var c = parseInt(prompt('Podaj liczbę, przez którą mają być podzielne:'));
+function liczbyPodzielne(a, b, c) {
+    console.log("Zadanie 2");
 
     for (var i = a; i <= b; i++) {
         if (i % c === 0) {
@@ -31,9 +25,8 @@ function liczbyPodzielne() {
 }
 
 // Zadanie 3
-function tabliczkaMnozenia() {
-    console.clear();
-    var bok = parseInt(prompt('Podaj bok tabliczki mnożenia:'));
+function tabliczkaMnozenia(bok) {
+    console.log("Zadanie 3");
 
     for (var i = 1; i <= bok; i++) {
         var row = '';
@@ -45,9 +38,8 @@ function tabliczkaMnozenia() {
 }
 
 // Zadanie 4
-function ciagFibonacciego() {
-    console.clear();
-    var dlugosc = parseInt(prompt('Podaj długość ciągu Fibonacciego:'));
+function ciagFibonacciego(dlugosc) {
+    console.log("Zadanie 4");
 
     var fib = [0, 1];
     for (var i = 2; i < dlugosc; i++) {
@@ -57,9 +49,8 @@ function ciagFibonacciego() {
 }
 
 // Zadanie 5
-function rysujChoinke() {
-    console.clear();
-    var wysokosc = parseInt(prompt('Podaj wysokość choinki:'));
+function rysujChoinke(wysokosc) {
+    console.log("Zadanie 5");
 
     for (var i = 1; i <= wysokosc; i++) {
         var row = '';
@@ -71,10 +62,9 @@ function rysujChoinke() {
 }
 
 // Zadanie 6
-function rysujChoinkaNoca() {
-    console.clear();
-    var wysokosc = parseInt(prompt('Podaj wysokość choinki nocą:'));
-    
+function rysujChoinkaNoca(wysokosc) {
+    console.log("Zadanie 6");
+
     for (var i = wysokosc; i >= 1; i--) {
         var row = '';
         for (var j = 1; j <= i; j++) {
@@ -92,14 +82,9 @@ function rysujChoinkaNoca() {
     console.log(ostatniRzad);
 }
 
-
 // Zadanie 7
-function poleFigury() {
-    console.clear();
-    var ksztalt = prompt('Podaj kształt figury (prostokat, trapez, rownoleglobok, trojkat):');
-    var wymiaryStr = prompt('Podaj wymiary figury oddzielone przecinkiem:');
-    var wymiary = wymiaryStr.split(',').map(Number);
-
+function poleFigury(ksztalt, wymiary) {
+    console.log("Zadanie 7");
     switch (ksztalt) {
         case 'prostokat':
             console.log('Pole prostokąta: ' + wymiary[0] * wymiary[1]);
@@ -119,12 +104,8 @@ function poleFigury() {
 }
 
 // Zadanie 8
-function poleFiguryCallback() {
-    console.clear();
-    var ksztalt = prompt('Podaj kształt figury (prostokat, trapez, rownoleglobok, trojkat):');
-    var wymiaryStr = prompt('Podaj wymiary figury oddzielone przecinkiem:');
-    var wymiary = wymiaryStr.split(',').map(Number);
-
+function poleFiguryCallback(ksztalt, wymiary) {
+    console.log("Zadanie 8");
     var obliczPole = function (ksztalt, wymiary) {
         var pola = {
             prostokat: function (wymiary) {
@@ -143,15 +124,12 @@ function poleFiguryCallback() {
 
         return pola[ksztalt](wymiary);
     };
-
     console.log('Pole figury: ' + obliczPole(ksztalt, wymiary));
 }
 
 // Zadanie 9
-function trojkatPascala() {
-    console.clear();
-    var wysokosc = parseInt(prompt('Podaj wysokość trójkąta Pascala:'));
-
+function trojkatPascala(wysokosc) {
+    console.log("Zadanie 9");
     var trojkat = [];
     for (var i = 0; i < wysokosc; i++) {
         trojkat[i] = [];
@@ -168,19 +146,18 @@ function trojkatPascala() {
 
 // Zadanie 10
 function cenzura(niedozwolone, zdanie) {
-    niedozwolone.forEach(function (slowo) {
-        var regex = new RegExp('\\b' + slowo.replace(/,/g, '') + '\\b', 'gi');
-        var match;
-        while ((match = regex.exec(zdanie)) !== null) {
-            zdanie = zdanie.substring(0, match.index) + '*'.repeat(match[0].length) + zdanie.substring(match.index + match[0].length);
-            regex.lastIndex = match.index + 1; // Przesuwamy lastIndex, aby uniknąć nieskończonej pętli
-        }
-    });
-    console.log(zdanie);
-}
+    const slowa = zdanie.split(' ');
 
-function uruchomCenzure() {
-    var niedozwoloneSlowa = prompt('Podaj niedozwolone słowa oddzielone przecinkiem:').split(',').map(word => word.trim());
-    var zdanieDoCenzury = prompt('Podaj zdanie do ocenzurowania:');
-    cenzura(niedozwoloneSlowa, zdanieDoCenzury);
+    for (let i = 0; i < slowa.length; i++) {
+        for (let j = 0; j < niedozwolone.length; j++) {
+            const slowo = niedozwolone[j].toLowerCase();
+
+            if (slowa[i].toLowerCase().includes(slowo)) {
+                slowa[i] = slowa[i].replace(new RegExp(slowo, 'gi'), '*'.repeat(slowo.length));
+            }
+        }
+    }
+
+    const wynik = slowa.join(' ');
+    console.log(wynik);
 }
