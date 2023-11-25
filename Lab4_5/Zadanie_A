@@ -167,15 +167,20 @@ function trojkatPascala() {
 }
 
 // Zadanie 10
-function cenzura() {
-    console.clear();
-    var zakazaneStr = prompt('Podaj zakazane słowa oddzielone przecinkiem:');
-    var zakazane = zakazaneStr.split(',').map(word => word.trim());
-    var zdanie = prompt('Podaj zdanie do ocenzurowania:');
-
-    zakazane.forEach(function (slowo) {
-        var regex = new RegExp('\\b' + slowo + '\\b', 'gi');
-        zdanie = zdanie.replace(regex, '*'.repeat(slowo.length));
+function cenzura(niedozwolone, zdanie) {
+    niedozwolone.forEach(function (slowo) {
+        var regex = new RegExp('\\b' + slowo.replace(/,/g, '') + '\\b', 'gi');
+        var match;
+        while ((match = regex.exec(zdanie)) !== null) {
+            zdanie = zdanie.substring(0, match.index) + '*'.repeat(match[0].length) + zdanie.substring(match.index + match[0].length);
+            regex.lastIndex = match.index + 1; // Przesuwamy lastIndex, aby uniknąć nieskończonej pętli
+        }
     });
     console.log(zdanie);
+}
+
+function uruchomCenzure() {
+    var niedozwoloneSlowa = prompt('Podaj niedozwolone słowa oddzielone przecinkiem:').split(',').map(word => word.trim());
+    var zdanieDoCenzury = prompt('Podaj zdanie do ocenzurowania:');
+    cenzura(niedozwoloneSlowa, zdanieDoCenzury);
 }
