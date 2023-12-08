@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #weather-container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #weather-icon {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="weather-container">
+    <h2>Weather App</h2>
+    <label for="city">Enter city:</label>
+    <input type="text" id="city" placeholder="Enter city name">
+    <button onclick="getWeather()">Get Weather</button>
+    <div id="weather-info">
+        <h3 id="city-name"></h3>
+        <p id="temperature"></p>
+        <img id="weather-icon" alt="Weather Icon">
+        <p id="description"></p>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    const apiKey = '5f82816ae5f6e914aea705bf5d99f1d7';
+
+    function getWeather() {
+        const cityName = $('#city').val();
+        
+        if (!cityName) {
+            alert('Please enter a city name');
+            return;
+        }
+
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
+
+        $.ajax({
+            url: apiUrl,
+            method: 'GET',
+            success: function (data) {
+                if (data && data.main && data.weather && data.weather.length > 0) {
+                    displayWeather(data);
+                } else {
+                    alert('Error retrieving weather data. Please try again.');
+                }
+            },
+            error: function (error) {
+                console.log('Error:', error);
+                alert('Error retrieving weather data. Please try again.');
+            }
+        });
+    }
+
+    function displayWeather(data) {
+        const cityName = data.name;
+        const temperature = data.main.temp;
+        const description = data.weather[0].description;
+        const iconCode = data.weather[0].icon;
+
+        $('#city-name').text(cityName);
+        $('#temperature').text(`Temperature: ${temperature} °C`);
+        $('#description').text(`Description: ${description}`);
+        $('#weather-icon').attr('src', `http://openweathermap.org/img/w/${iconCode}.png`);
+    }
+</script>
+
+</body>
+</html>
