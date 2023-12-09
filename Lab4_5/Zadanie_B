@@ -1,47 +1,126 @@
-// Zadanie 11
-
-class Auto {
-    constructor(rok, przebieg, cena_wyjsciowa, cena_koncowa) {
-        this.rok = rok;
-        this.przebieg = przebieg;
-        this.cena_wyjsciowa = cena_wyjsciowa;
-        this.cena_koncowa = cena_koncowa;
+class Ocena {
+    constructor(przedmiot, wartosc) {
+      this.przedmiot = przedmiot;
+      this.wartosc = wartosc;
     }
-
-    powiekszCeneWyjsciowa() {
-        this.cena_wyjsciowa += 1000;
+  }
+  
+  class Uczen {
+    constructor(imie, nazwisko) {
+      this.imie = imie;
+      this.nazwisko = nazwisko;
+      this._oceny = [];
+      this.sredniaOcena = 0;
     }
-
-    obnizCeneKoncowaZaKazdyRok() {
-        const wiekAutu = new Date().getFullYear() - this.rok;
-        this.cena_koncowa -= wiekAutu * 1000;
+  
+    set nowaOcena(ocena) {
+      if (ocena instanceof Ocena) {
+        this._oceny.push(ocena);
+        this.obliczSredniaOcene();
+      } else {
+        console.log("Błąd: Przekazany obiekt nie jest oceną.");
+      }
     }
-
-    obnizCeneKoncowaZaKazde100000Km() {
-        const iloscRazy100000Km = Math.floor(this.przebieg / 100000);
-        this.cena_koncowa -= iloscRazy100000Km * 10000;
+  
+    get oceny() {
+      if (this._oceny.length === 0) {
+        return "Brak dostępnych ocen.";
+      }
+  
+      return this._oceny.map(ocena => `${ocena.przedmiot}: ocena ${ocena.wartosc}`).join(". ");
     }
-
-    dodajPrzebiegIRok(przebieg, rok) {
-        this.przebieg += przebieg;
-        this.rok += rok;
-        this.obnizCeneKoncowaZaKazdyRok();
-        this.obnizCeneKoncowaZaKazde100000Km();
+  
+    obliczSredniaOcene() {
+      if (this._oceny.length === 0) {
+        this.sredniaOcena = 0;
+        return;
+      }
+  
+      const sumaOcen = this._oceny.reduce((suma, ocena) => suma + ocena.wartosc, 0);
+      this.sredniaOcena = sumaOcen / this._oceny.length;
     }
-
-    toString() {
-        return `Auto (${this.rok})`;
+  
+    powitanie() {
+      return `Czesc ${this.imie} ${this.nazwisko}, Twoja srednia ocena to: ${this.sredniaOcena.toFixed(2)}`;
     }
-}
-
-const samochody = [];
-
-function dodajAuto(auto) {
-    if (auto.cena_wyjsciowa > 10000) {
-        samochody.push(auto);
+  }
+  
+  class Samochod {
+    constructor(marka, rok, przebieg, cenaPoczatkowa, cenaKoncowa) {
+      this.marka = marka;
+      this.rok = rok;
+      this.przebieg = przebieg;
+      this.cenaPoczatkowa = cenaPoczatkowa;
+      this.cenaKoncowa = cenaKoncowa;
     }
-}
-
-function zwiekszRokWszystkimAutom() {
-    samochody.forEach(auto => auto.rok++);
-}
+  
+    zwiekszCene() {
+      this.cenaPoczatkowa += 1000;
+    }
+  
+    zmniejszCeneZeWzgleduNaWiek() {
+      const aktualnyRok = new Date().getFullYear();
+      const wiekSamochodu = aktualnyRok - this.rok;
+      this.cenaKoncowa = Math.max(this.cenaKoncowa - wiekSamochodu * 1000, 100);
+    }
+  
+    zmniejszCeneZeWzgleduNaPrzebieg() {
+      const setkiTysiecyKm = Math.floor(this.przebieg / 100000);
+      this.cenaKoncowa = Math.max(this.cenaKoncowa - setkiTysiecyKm * 10000, 100);
+    }
+  
+    dodajPrzebiegIRok(nowyPrzebieg, nowyRok) {
+      this.przebieg += nowyPrzebieg;
+      this.rok = nowyRok;
+      this.zmniejszCeneZeWzgleduNaWiek();
+      this.zmniejszCeneZeWzgleduNaPrzebieg();
+    }
+  }
+  
+  let samochody = [];
+  
+  function dodajSamochod(marka, rok, przebieg, cenaPoczatkowa, cenaKoncowa) {
+    let nowySamochod = new Samochod(marka, rok, przebieg, cenaPoczatkowa, cenaKoncowa);
+  
+    if (cenaKoncowa > 10000) {
+      samochody.push(nowySamochod);
+      console.log(`Dodano nowy ${marka} samochód do tablicy samochodów.`);
+    } else {
+      console.log(`${marka} samochód nie spełnia warunku cenowego.`);
+    }
+  }
+  
+  function zwiekszRokDlaWszystkichSamochodow() {
+    for (let i = 0; i < samochody.length; i++) {
+      samochody[i].rok++;
+    }
+    console.log("Zwiększono rok o 1 dla wszystkich samochodów w tablicy samochodów.");
+  }
+  
+  let samochod = new Samochod("Audi", 2004, 875000, 1300, 2500);
+  console.log(samochod);
+  samochod.dodajPrzebiegIRok(1000000, 2000);
+  samochod.zmniejszCeneZeWzgleduNaWiek();
+  samochod.zmniejszCeneZeWzgleduNaPrzebieg();
+  console.log(samochod);
+  
+  dodajSamochod("Seat", 2015, 80000, 14000, 10000);
+  dodajSamochod("Ford", 2020, 25000, 20000, 19000);
+  
+  console.log("Tablica samochodów po dodaniu:");
+  console.log(samochody);
+  
+  zwiekszRokDlaWszystkichSamochodow();
+  
+  console.log("Tablica samochodów po zwiększeniu roku:");
+  console.log(samochody);
+  
+  let ocena1 = new Ocena("ANG", 2);
+  let ocena2 = new Ocena("MPR", 4);
+  let uczen = new Uczen("Dominik", "Ludwiński");
+  
+  uczen.nowaOcena = ocena1;
+  uczen.nowaOcena = ocena2;
+  
+  console.log(uczen.oceny);
+  console.log(uczen.powitanie());
