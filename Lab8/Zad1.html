@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #stockTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        #stockTable th, #stockTable td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #newsRotator {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Stock Market App</h1>
+    <table id="stockTable">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Company</th>
+                <th>Price</th>
+                <th>Change</th>
+            </tr>
+        </thead>
+        <tbody id="stockData">
+            <!-- Stock data will be displayed here -->
+        </tbody>
+    </table>
+
+    <div id="newsRotator">
+        <!-- News will be displayed here -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        const apiUrl = 'http://szuflandia.pjwstk.edu.pl/~ppisarski/zad8/dane.php';
+        let lastNews = [];
+
+        function fetchData() {
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => updateDOM(data))
+        .catch(error => console.error('Error fetching data:', error));
+}
+
+function updateDOM(data) {
+    // Check if stock data has changed
+    const stockDataElement = document.getElementById('stockData');
+    if (Array.isArray(data.stock)) {
+        stockDataElement.innerHTML = generateStockTable(data.stock);
+    } else if (typeof data.stock === 'object') {
+        stockDataElement.innerHTML = generateStockTable([data.stock]);
+    } else {
+        console.error('Invalid stock data format:', data.stock);
+    }
+
+    // Check if news has changed
+    const newsRotatorElement = document.getElementById('newsRotator');
+    if (Array.isArray(data.news)) {
+        updateNewsRotator(data.news);
+    } else {
+        console.error('Invalid news data format:', data.news);
+        newsRotatorElement.innerHTML = `<div>${data.news}</div>`;  // Display the single news as a div
+    }
+}
+
+        function isDataEqual(oldData, newData) {
+            return oldData === newData;
+        }
+
+        function generateStockTable(stockData) {
+    if (Array.isArray(stockData)) {
+        return stockData.map(stock => `
+            <tr>
+                <td>${stock.symbol}</td>
+                <td>${stock.company}</td>
+                <td>${stock.price}</td>
+                <td>${stock.change}</td>
+            </tr>
+        `).join('');
+    } else if (typeof stockData === 'object') {
+        // Handle single stock item
+        return `
+            <tr>
+                <td>${stockData.symbol}</td>
+                <td>${stockData.company}</td>
+                <td>${stockData.price}</td>
+                <td>${stockData.change}</td>
+            </tr>
+        `;
+    } else {
+        console.error('Invalid stock data format:', stockData);
+        return '';  // Return an empty string or handle the error as needed
+    }
+}
+
+        function updateNewsRotator(newsData) {
+            const newsRotatorElement = document.getElementById('newsRotator');
+            newsRotatorElement.innerHTML = newsData.slice(0, 3).map(news => `- ${news.headline} -`).join(' | ');
+        }
+
+        setInterval(fetchData, 10000);
+
+        fetchData();
+    </script>
+</body>
+
+</html>

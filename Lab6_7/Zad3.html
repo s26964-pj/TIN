@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samochody</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    // Tworzenie tablicy obiektów typu auto
+    var samochody = [
+      { rok: 2010, przebieg: 100000, cena_wyjsciowa: 20000, cena_koncowa: 18000 },
+      { rok: 2015, przebieg: 80000, cena_wyjsciowa: 25000, cena_koncowa: 22000 },
+      { rok: 2020, przebieg: 50000, cena_wyjsciowa: 30000, cena_koncowa: 28000 }
+    ];
+
+    // Tworzenie tabelki DOM
+    var table = document.createElement("table");
+
+    // Dodanie nagłówków tabeli
+    var thead = table.createTHead();
+    var headerRow = thead.insertRow();
+    var headers = ["Rok", "Przebieg", "Cena Wyjściowa", "Cena Końcowa"];
+
+    for (var i = 0; i < headers.length; i++) {
+      var th = document.createElement("th");
+      th.appendChild(document.createTextNode(headers[i]));
+      headerRow.appendChild(th);
+    }
+
+    // Dodanie danych do tabeli
+    var tbody = table.createTBody();
+    for (var j = 0; j < samochody.length; j++) {
+      var row = tbody.insertRow();
+
+      var cellRok = row.insertCell(0);
+      cellRok.appendChild(document.createTextNode(samochody[j].rok));
+
+      var cellPrzebieg = row.insertCell(1);
+      cellPrzebieg.appendChild(document.createTextNode(samochody[j].przebieg));
+
+      var cellCenaWyjsciowa = row.insertCell(2);
+      cellCenaWyjsciowa.appendChild(document.createTextNode(samochody[j].cena_wyjsciowa));
+
+      var cellCenaKoncowa = row.insertCell(3);
+      cellCenaKoncowa.appendChild(document.createTextNode(samochody[j].cena_koncowa));
+    }
+
+    // Dodanie tabeli do strony
+    document.body.appendChild(table);
+  </script>
+
+</body>
+</html>
